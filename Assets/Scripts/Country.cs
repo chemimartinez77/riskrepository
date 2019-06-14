@@ -10,6 +10,8 @@ public class Country : MonoBehaviour
     public string countryName;
     public Army army;
     public Player owner;
+
+    public bool zoomable = true;
     //public GameController gameController;
 
     private bool highlighted = false;
@@ -46,44 +48,4 @@ public class Country : MonoBehaviour
         highlighted = false;
     }
 
-    // private void CheckDropArmy(){
-    //     if (gameController.currentPhase == GameConstants.Phase.Reinforcement || gameController.currentPhase == GameConstants.Phase.Start){
-    //         if (highlighted){
-    //             bool leftClick = false;
-    //             if(Input.GetMouseButtonDown(0)) leftClick = true;
-    //             if (leftClick && (gameController.currentPlayer == owner || owner == null)){ // && not Occupied for the startphase
-
-    //                 if (owner == null){
-    //                     owner = gameController.currentPlayer;
-    //                 }
-    //                 DropArmy();
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void DropArmy(){
-    //     Vector3 countryPos = transform.position;
-    //     Debug.Log("Army.number: "+army.numberOfUnits);
-    //     if (army.numberOfUnits == 0){
-    //         Debug.Log("Pintar ejercito");
-    //         SpriteRenderer armySpriteRenderer = army.GetComponent<SpriteRenderer>();
-    //         armySpriteRenderer.sprite = Resources.Load<Sprite>("Pics/soldier");
-    //         army.transform.localScale = new Vector3(0.1f, 0.1f, 1);
-    //         army.numberOfUnits = army.numberOfUnits + 1;
-    //         Instantiate(army);
-    //         Debug.Log("army pos: "+army.transform.position);
-    //         Debug.Log("country pos: "+countryPos);
-    //         army.transform.position = new Vector3(countryPos.x, countryPos.y, countryPos.z -1);
-    //         Debug.Log("army pos: "+army.transform.position);
-    //         army.belongsToCountry = this;
-    //     } else {
-    //         army.numberOfUnits = army.numberOfUnits + 1;
-    //         GameObject text = army.transform.GetChild(0).gameObject;
-    //         Debug.Log("text: "+text);
-    //         text.GetComponent<TextMeshPro>().text="x"+army.numberOfUnits;
-    //     }
-
-    // }
-
-}
+ }

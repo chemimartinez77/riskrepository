@@ -10,6 +10,9 @@ public class ZoomObject : MonoBehaviour {
     private Vector3 originalScale;
     private Vector3 originalPosition;
 
+    public GameController gameController;
+
+
 	private bool mustZoom;
     private bool highlighted = false;
     private bool selected = false;
@@ -33,7 +36,10 @@ public class ZoomObject : MonoBehaviour {
     private void OnMouseEnter() {
         highlighted = true;
         GetComponent<SpriteRenderer>().color = overColor;
-        mustZoom=true;
+
+        if (gameController.currentPhase == GameConstants.Phase.Start){
+            mustZoom=true;
+        }
         transform.position=new Vector3(transform.position.x, transform.position.y, transform.position.z - 20);
         x = transform.localScale.x*1.015f;
         y = transform.localScale.y*1.015f;
@@ -67,7 +73,7 @@ public class ZoomObject : MonoBehaviour {
         transform.position=originalPosition;
     }
 
-
+// Esto no va aquí. Zoom object debe encargarse sólo del zoom
     private void CheckSelectCountry(){ // Esto no va aquí. Zoom object debe encargarse sólo del zoom
         bool rightClick = false;
         bool leftClick = false;

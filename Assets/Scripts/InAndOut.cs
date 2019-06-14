@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-    public class InAndOut : MonoBehaviour {
-        private Vector3 originalScale;
-        private Vector3 originalPosition;
-        float x = 0f;
-        float y = 0f;
+    public class InAndOut : MonoBehaviour {	private Color overColor = GameConstants.ConvertColor(0, 255, 255, 255);
+    private Color selectColor = GameConstants.ConvertColor(150, 0, 0, 255);
+    private Color originalColor;
+    private Vector3 originalScale;
+    private Vector3 originalPosition;
+
+	private bool mustZoom;
+    private bool highlighted = false;
+    private bool selected = false;
+    float x = 0f;
+    float y = 0f;
+
+
 
     private void Start(){
+        mustZoom = false;
         originalScale = transform.localScale;
         originalPosition = transform.position;
+        originalColor = GetComponent<SpriteRenderer>().color;
     }
 
+    private void Update(){
+        if (mustZoom){
+            mustZoom=false;
+            StartCoroutine("ZoomInOut");
+        }
+    }
     public IEnumerator ZoomInOut(){
         for (int i = 0; i < 2;i++){
             x = transform.localScale.x*0.985f;
